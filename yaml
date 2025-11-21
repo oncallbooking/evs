@@ -1,0 +1,20 @@
+
+---
+
+## Quick notes & guidance
+
+- This is a **prototype** meant to run locally. It intentionally avoids complex infrastructure to be quick to test.
+- Persistence is via `data/db.json`. The demo reset endpoint `POST /api/__reset_demo` populates demo technicians and a sample job.
+- No authentication or payments are included — add JWT, Razorpay and masked-communications later.
+- To make it PWA-capable, add a `manifest.json` and `service-worker.js` and register the service worker in `app.js`.
+- To scale for production, migrate to a DB (Postgres/Mongo), use proper migration and access controls, add rate-limiting, input sanitization, and a production-ready deployment (AWS/ECS, Cloud Run, etc).
+
+---
+
+If you want, I can now:
+- Convert this prototype into a Next.js app (React) with the same APIs, or
+- Add JWT-based auth + OTP flow (server + frontend), or
+- Add a simple WebSocket (socket.io) for live bids/notifications, or
+- Generate Dockerfile and simple `docker-compose` setup for local dev.
+
+Tell me which extension you want and I’ll produce the files immediately.
