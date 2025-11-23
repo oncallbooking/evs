@@ -1,26 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LabourConnect Login</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login — LabourConnect</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="page">
-  <h1>LabourConnect Login</h1>
-  <form id="loginForm">
-    <label for="phone">Mobile Number</label>
-    <input type="tel" id="phone" placeholder="Enter mobile number" required>
-    <button type="submit" class="btn-primary">Send OTP</button>
-  </form>
+<main class="auth-page">
+  <h2>Login via OTP</h2>
+  <input type="text" id="loginPhone" placeholder="Enter mobile number">
+  <button id="sendOTP">Send OTP</button>
   <div id="otpSection" style="display:none;">
-    <label for="otp">Enter OTP</label>
-    <input type="text" id="otp" placeholder="OTP" required>
-    <button id="verifyOtpBtn" class="btn-primary">Verify OTP</button>
+    <input type="text" id="otpInput" placeholder="Enter OTP">
+    <button id="verifyOTP">Verify OTP</button>
   </div>
-  <p>Don't have account? <a href="signup.html">Signup</a></p>
-</div>
-<script src="app.js"></script>
+  <p><a href="signup.html">New user? Signup</a></p>
+</main>
+<script>
+document.getElementById('sendOTP').addEventListener('click', async ()=>{
+  const phone = document.getElementById('loginPhone').value;
+  if(!phone) return alert('Enter phone number');
+  const res = await fetch('/api/auth/send-otp',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phone})});
+  if(res.ok){ document.getElementById('otpSection').style.display='block'; }
+});
+document.getElementById('verifyOTP').addEventListener('click', async ()=>{
+  const phone = document.getElementById('loginPhone').value;
+  const otp = document.getElementById('otpInput').value;
+  const res = await fetch('/api/auth/verify-otp',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phone,otp})});
+  const data = await res.json();
+  if(data.success){ alert('Logged in'); window.location='dashboard.html'; } else { alert('OTP invalid'); }
+});
+</script>
 </body>
 </html>
