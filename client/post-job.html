@@ -3,26 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Post Job - LabourConnect</title>
+<title>Post Job — LabourConnect</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="page">
-  <h1>Post a Job</h1>
-  <form id="postJobForm">
-    <label>Job Title</label>
-    <input type="text" id="jobTitle" required>
-    <label>Category</label>
-    <select id="jobCategory" required>
-      <!-- same categories as signup -->
-    </select>
-    <label>Description</label>
-    <textarea id="jobDesc" required></textarea>
-    <label>Location (City / PIN)</label>
-    <input type="text" id="jobLocation" required>
-    <button type="submit" class="btn-primary">Post Job</button>
-  </form>
-</div>
-<script src="app.js"></script>
+<main class="post-job-page">
+  <h2>Post a Job</h2>
+  <input type="text" id="jobTitle" placeholder="Job title">
+  <textarea id="jobDesc" placeholder="Job description"></textarea>
+  <input type="text" id="jobLocation" placeholder="Enter PIN or city">
+  <select id="jobCategory">
+    <option value="">Select Category</option>
+    <option>Construction & Civil Work</option>
+    <option>Industrial & Factory Labour</option>
+    <option>Agricultural Labour</option>
+    <option>Household & Domestic Work</option>
+    <option>Transportation & Loading Work</option>
+    <option>Event & Hospitality Labour</option>
+    <option>Retail & Commercial Labour</option>
+    <option>Municipal & Public Utility Labour</option>
+    <option>Specialized Technical Labour</option>
+    <option>Maintenance & Repair Labour</option>
+    <option>Mining & Quarry Labour</option>
+    <option>Port & Dock Labour</option>
+  </select>
+  <button id="postJobBtn">Post Job</button>
+</main>
+
+<script>
+document.getElementById('postJobBtn').addEventListener('click', async ()=>{
+  const job = {
+    title: document.getElementById('jobTitle').value,
+    desc: document.getElementById('jobDesc').value,
+    location: document.getElementById('jobLocation').value,
+    category: document.getElementById('jobCategory').value
+  };
+  const res = await fetch('/api/jobs',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(job)});
+  if(res.ok){ alert('Job posted'); window.location='dashboard.html'; } else alert('Error posting job');
+});
+</script>
 </body>
 </html>
