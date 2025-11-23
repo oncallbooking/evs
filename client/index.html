@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LabourConnect — Find Local Labour / Technicians</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <div class="brand">LabourConnect</div>
+  <nav>
+    <a href="login.html">Login</a>
+    <a href="signup.html">Signup</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <h1>Find Local Labour & Technicians Instantly</h1>
+    <p>Select category, post jobs, chat with verified technicians</p>
+    <div class="search-card">
+      <input type="text" id="searchInput" placeholder="Enter PIN code or city">
+      <select id="categorySelect">
+        <option value="">Select Category</option>
+        <option>Construction & Civil Work</option>
+        <option>Industrial & Factory Labour</option>
+        <option>Agricultural Labour</option>
+        <option>Household & Domestic Work</option>
+        <option>Transportation & Loading Work</option>
+        <option>Event & Hospitality Labour</option>
+        <option>Retail & Commercial Labour</option>
+        <option>Municipal & Public Utility Labour</option>
+        <option>Specialized Technical Labour</option>
+        <option>Maintenance & Repair Labour</option>
+        <option>Mining & Quarry Labour</option>
+        <option>Port & Dock Labour</option>
+      </select>
+      <button id="searchBtn">Search</button>
+    </div>
+    <div id="searchResult" class="muted">Enter location & category to find technicians near you.</div>
+  </section>
+
+  <section class="category-slider">
+    <h2>Popular Categories</h2>
+    <div class="slider-track" id="categoryTrack">
+      <!-- Will dynamically populate from JS -->
+    </div>
+  </section>
+
+  <section id="techPanel">
+    <h2>Available Technicians</h2>
+    <div id="techList"></div>
+  </section>
+
+</main>
+
+<script src="app.js"></script>
+<script src="voicebot.js"></script>
+</body>
+</html>
