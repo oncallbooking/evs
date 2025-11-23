@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LabourConnect Login</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="page">
+  <h1>LabourConnect Login</h1>
+  <form id="loginForm">
+    <label for="phone">Mobile Number</label>
+    <input type="tel" id="phone" placeholder="Enter mobile number" required>
+    <button type="submit" class="btn-primary">Send OTP</button>
+  </form>
+  <div id="otpSection" style="display:none;">
+    <label for="otp">Enter OTP</label>
+    <input type="text" id="otp" placeholder="OTP" required>
+    <button id="verifyOtpBtn" class="btn-primary">Verify OTP</button>
+  </div>
+  <p>Don't have account? <a href="signup.html">Signup</a></p>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
