@@ -1,28 +1,63 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Technician Dashboard</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LabourConnect — Technician Dashboard</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <div class="page">
   <header>
-    <h1>Welcome Technician, <span id="techName"></span></h1>
-    <div>Wallet Balance: ₹<span id="techWallet">0</span></div>
+    <div class="brand">
+      <div class="logo">LC</div>
+      <div>
+        <h1>LabourConnect</h1>
+        <p class="muted">Technician Panel</p>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn" onclick="logout()">Logout</button>
+    </div>
   </header>
 
-  <section id="assignedJobs">
-    <h2>Assigned Jobs</h2>
-    <div id="techJobList"></div>
-  </section>
+  <section style="margin-top:20px">
+    <h2>Welcome, <span id="techName">Technician</span></h2>
 
-  <section id="chatUnlocks">
-    <h2>Chat Requests</h2>
-    <div id="techChatList"></div>
+    <div class="two-box-wrap">
+      <!-- Jobs Assigned -->
+      <div class="panel" id="assignedJobs">
+        <h3>Assigned Jobs</h3>
+        <div id="jobList"></div>
+      </div>
+
+      <!-- Wallet & Chat Unlock -->
+      <div class="panel" id="walletPanel">
+        <h3>Wallet & Chat Unlock</h3>
+        <p class="muted">Recharge & unlock customer chats</p>
+        <div>Balance: ₹<span id="walletBalance">0</span></div>
+        <button class="btn-primary" onclick="showRecharge()">Recharge Wallet</button>
+        <div id="rechargeSection" style="display:none; margin-top:10px">
+          <label>Upload Payment Screenshot:</label>
+          <input type="file" id="screenshotUpload" accept="image/*"><br>
+          <button class="btn-primary" onclick="submitRecharge()">Submit for Approval</button>
+        </div>
+        <h4 style="margin-top:16px">Unlocked Chats</h4>
+        <ul id="unlockedChats"></ul>
+      </div>
+    </div>
   </section>
 </div>
+
 <script src="app.js"></script>
+<script>
+const techName = localStorage.getItem('techName') || 'Technician';
+document.getElementById('techName').textContent = techName;
+
+// Mock functions
+function logout(){ localStorage.clear(); location.href='login.html'; }
+function showRecharge(){ document.getElementById('rechargeSection').style.display='block'; }
+function submitRecharge(){ alert('Payment submitted for admin approval'); }
+</script>
 </body>
 </html>
