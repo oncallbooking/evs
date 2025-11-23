@@ -3,32 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard - LabourConnect</title>
+<title>Dashboard — LabourConnect</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="page">
-  <header>
-    <h1>Welcome, <span id="userName"></span></h1>
-    <div>Wallet Balance: ₹<span id="walletBalance">0</span></div>
-  </header>
+<header>
+  <div class="brand">LabourConnect</div>
+  <nav>
+    <a href="post-job.html">Post Job</a>
+    <a href="#" id="walletBtn">Wallet</a>
+  </nav>
+</header>
 
-  <section id="jobsSection">
-    <h2>Available Jobs</h2>
+<main>
+  <section id="techPanel">
+    <h2>Technicians Near You</h2>
+    <div id="techList"></div>
+  </section>
+
+  <section id="jobsPanel">
+    <h2>Your Posted Jobs</h2>
     <div id="jobList"></div>
   </section>
+</main>
 
-  <section id="chatSection">
-    <h2>Unlocked Chats</h2>
-    <div id="chatList"></div>
-  </section>
-
-  <section>
-    <button id="rechargeBtn" class="btn-primary">Recharge Wallet</button>
-  </section>
+<!-- Recharge / wallet popup -->
+<div id="walletPopup" class="popup" style="display:none;">
+  <h3>Wallet Recharge</h3>
+  <p>₹10 per chat unlock</p>
+  <input type="number" id="rechargeAmount" placeholder="Enter amount">
+  <button id="rechargeBtn">Upload Payment Screenshot</button>
+  <button id="walletClose">Close</button>
 </div>
 
 <script src="app.js"></script>
 <script src="voicebot.js"></script>
+<script>
+document.getElementById('walletBtn').addEventListener('click',()=>{ document.getElementById('walletPopup').style.display='block'; });
+document.getElementById('walletClose').addEventListener('click',()=>{ document.getElementById('walletPopup').style.display='none'; });
+</script>
 </body>
 </html>
