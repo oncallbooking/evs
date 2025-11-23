@@ -1,0 +1,13 @@
+body{margin:0;font-family:Arial,sans-serif;background:#07121a;color:#e6eef2}
+header{display:flex;justify-content:space-between;align-items:center;padding:12px;background:#0f1724}
+header .brand{font-weight:bold;font-size:18px}
+header nav a{margin-left:12px;color:#94a3b8;text-decoration:none}
+main{padding:16px}
+input,select,textarea,button{margin:6px 0;padding:10px;border-radius:8px;border:1px solid #333;background:#0f1724;color:#e6eef2;width:100%}
+button{cursor:pointer}
+.popup{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#0f1724;padding:20px;border-radius:12px;z-index:50}
+.muted{color:#94a3b8}
+.slider-track{display:flex;overflow-x:auto;gap:12px;padding:8px}
+.slider-track::-webkit-scrollbar{height:6px}
+.slider-track::-webkit-scrollbar-thumb{background:#06b39a;border-radius:4px}
+.slider-item{padding:10px 12px;background:#0f1724;border-radius:10px;cursor:pointer;white-space:nowrap}
