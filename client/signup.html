@@ -3,37 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LabourConnect Signup</title>
+<title>Signup — LabourConnect</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="page">
-  <h1>Signup</h1>
-  <form id="signupForm">
-    <label for="name">Full Name</label>
-    <input type="text" id="name" placeholder="Your name" required>
-    <label for="phone">Mobile Number</label>
-    <input type="tel" id="phone" placeholder="Enter mobile number" required>
-    <label for="category">Category</label>
-    <select id="category" required>
-      <option value="">Select category</option>
-      <option>Construction & Civil Work</option>
-      <option>Industrial & Factory Labour</option>
-      <option>Agricultural Labour</option>
-      <option>Household & Domestic Work</option>
-      <option>Transportation & Loading Work</option>
-      <option>Event & Hospitality Labour</option>
-      <option>Retail & Commercial Labour</option>
-      <option>Municipal & Public Utility Labour</option>
-      <option>Specialized Technical Labour</option>
-      <option>Maintenance & Repair Labour</option>
-      <option>Mining & Quarry Labour</option>
-      <option>Port & Dock Labour</option>
-    </select>
-    <button type="submit" class="btn-primary">Signup</button>
-  </form>
-  <p>Already have account? <a href="login.html">Login</a></p>
-</div>
-<script src="app.js"></script>
+<main class="auth-page">
+  <h2>Signup</h2>
+  <input type="text" id="signupName" placeholder="Full Name">
+  <input type="text" id="signupPhone" placeholder="Mobile Number">
+  <button id="sendSignupOTP">Send OTP</button>
+  <div id="otpSection" style="display:none;">
+    <input type="text" id="otpInput" placeholder="Enter OTP">
+    <button id="verifySignupOTP">Verify OTP</button>
+  </div>
+  <p><a href="login.html">Already have account? Login</a></p>
+</main>
+<script>
+document.getElementById('sendSignupOTP').addEventListener('click', async ()=>{
+  const phone = document.getElementById('signupPhone').value;
+  const name = document.getElementById('signupName').value;
+  if(!phone || !name) return alert('Enter all fields');
+  const res = await fetch('/api/auth/signup',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phone,name})});
+  if(res.ok){ document.getElementById('otpSection').style.display='block'; }
+});
+document.getElementById('verifySignupOTP').addEventListener('click', async ()=>{
+  const phone = document.getElementById('signupPhone').value;
+  const otp = document.getElementById('otpInput').value;
+  const res = await fetch('/api/auth/verify-signup',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phone,otp})});
+  const data = await res.json();
+  if(data.success){ alert('Account created'); window.location='dashboard.html'; } else { alert('OTP invalid'); }
+});
+</script>
 </body>
 </html>
