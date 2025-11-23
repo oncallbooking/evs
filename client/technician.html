@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Technician Dashboard</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="page">
+  <header>
+    <h1>Welcome Technician, <span id="techName"></span></h1>
+    <div>Wallet Balance: ₹<span id="techWallet">0</span></div>
+  </header>
+
+  <section id="assignedJobs">
+    <h2>Assigned Jobs</h2>
+    <div id="techJobList"></div>
+  </section>
+
+  <section id="chatUnlocks">
+    <h2>Chat Requests</h2>
+    <div id="techChatList"></div>
+  </section>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
