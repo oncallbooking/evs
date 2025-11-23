@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard - LabourConnect</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="page">
+  <header>
+    <h1>Welcome, <span id="userName"></span></h1>
+    <div>Wallet Balance: ₹<span id="walletBalance">0</span></div>
+  </header>
+
+  <section id="jobsSection">
+    <h2>Available Jobs</h2>
+    <div id="jobList"></div>
+  </section>
+
+  <section id="chatSection">
+    <h2>Unlocked Chats</h2>
+    <div id="chatList"></div>
+  </section>
+
+  <section>
+    <button id="rechargeBtn" class="btn-primary">Recharge Wallet</button>
+  </section>
+</div>
+
+<script src="app.js"></script>
+<script src="voicebot.js"></script>
+</body>
+</html>
